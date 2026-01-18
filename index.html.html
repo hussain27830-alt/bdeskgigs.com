@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDeskGigs - বাংলাদেশের ফ্রিল্যান্সিং প্ল্যাটফর্ম</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1dbf73;
+            --secondary: #003912;
+            --light: #f7f9fc;
+            --dark: #222325;
+            --gray: #62646a;
+            --border: #e4e5e7;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-primary:hover, .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #f1fdf7, #e3f7eb);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .search-box {
+            max-width: 700px;
+            margin: 30px auto 0;
+            display: flex;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 20px 30px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .search-box button {
+            padding: 0 40px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-box button:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 18px;
+        }
+        
+        .service-rating {
+            color: #ffb33e;
+            font-weight: 600;
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .payment-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .payment-info {
+            flex: 1;
+        }
+        
+        .payment-info h2 {
+            font-size: 32px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .payment-info p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            min-width: 180px;
+        }
+        
+        .payment-method i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .payment-method span {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .payment-details {
+            flex: 1;
+            background-color: #f1fdf7;
+            border-radius: 10px;
+            padding: 30px;
+            border: 2px solid var(--primary);
+        }
+        
+        .payment-details h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .payment-number {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px dashed var(--primary);
+        }
+        
+        .payment-number h4 {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .payment-number .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .payment-instructions {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .payment-instructions h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .payment-instructions ul {
+            padding-left: 20px;
+            color: var(--gray);
+        }
+        
+        .payment-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .payment-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .search-box input, .search-box button {
+                width: 100%;
+                border-radius: 0;
+                padding: 15px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>BDesk</span>Gigs
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">How it Works</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-primary">Join</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>বাংলাদেশের সেরা ফ্রিল্যান্সিং প্ল্যাটফর্ম</h1>
+            <p>যেকোনো ধরনের সেবা ক্রয় করুন এবং বাংলাদেশের জনপ্রিয় পেমেন্ট সিস্টেম Bkash, Nagad ও Rocket এর মাধ্যমে সহজে পেমেন্ট করুন।</p>
+            <div class="search-box">
+                <input type="text" placeholder="আপনি কি ধরনের সেবা খুঁজছেন? (উদাহরণ: ওয়েবসাইট ডিজাইন, লোগো ডিজাইন, কন্টেন্ট রাইটিং)">
+                <button>খুঁজুন</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>জনপ্রিয় গিগস</h2>
+                <p>বিভিন্ন ক্যাটাগরিতে হাজারো দক্ষ ফ্রিল্যান্সারদের থেকে সেবা নির্বাচন করুন</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="service-content">
+                        <h3>প্রফেশনাল ওয়েবসাইট ডিজাইন</h3>
+                        <p>আপনার ব্যবসার জন্য সম্পূর্ণ রেসপনসিভ ওয়েবসাইট ডিজাইন করবো HTML, CSS এবং JavaScript ব্যবহার করে।</p>
+                        <div class="service-footer">
+                            <div class="service-price">৳ ৩,০০০</div>
+                            <div class="service-rating">
+                                <i class="fas fa-star"></i> ৪.৯ (১২৩)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w-600&q=80');"></div>
+                    <div class="service-content">
+                        <h3>লোগো ও ব্র্যান্ডিং ডিজাইন</h3>
+                        <p>আপনার ব্র্যান্ডের জন্য আকর্ষণীয় লোগো এবং সম্পূর্ণ ব্র্যান্ড আইডেন্টিটি ডিজাইন করবো।</p>
+                        <div class="service-footer">
+                            <div class="service-price">৳ ১,৫০০</div>
+                            <div class="service-rating">
+                                <i class="fas fa-star"></i> ৫.০ (৮৯)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="service-content">
+                        <h3>কন্টেন্ট রাইটিং ও ব্লগিং</h3>
+                        <p>আপনার ওয়েবসাইট, ব্লগ বা বিজ্ঞাপনের জন্য উচ্চমানের বাংলা ও ইংরেজি কন্টেন্ট লিখে দেবো।</p>
+                        <div class="service-footer">
+                            <div class="service-price">৳ ৫০০/পৃষ্ঠা</div>
+                            <div class="service-rating">
+                                <i class="fas fa-star"></i> ৪.৮ (২০৭)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>সহজ পেমেন্ট সিস্টেম</h2>
+                <p>বাংলাদেশের জনপ্রিয় মোবাইল ফাইন্যান্স সার্ভিসের মাধ্যমে সহজে পেমেন্ট করুন</p>
+            </div>
+            <div class="payment-container">
+                <div class="payment-info">
+                    <h2>পেমেন্ট করুন যেকোনো সময়, যেকোনো জায়গা থেকে</h2>
+                    <p>BDeskGigs এ আপনি সহজেই Bkash, Nagad এবং Rocket এর মাধ্যমে পেমেন্ট করতে পারবেন। নিচের নম্বরটিতে পেমেন্ট করে অর্ডার নিশ্চিত করুন।</p>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Bkash</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-wallet"></i>
+                            <span>Nagad</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-rocket"></i>
+                            <span>Rocket</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-details">
+                    <h3>পেমেন্ট নম্বর</h3>
+                    <div class="payment-number">
+                        <h4>নিচের নম্বরটিতে পেমেন্ট করুন:</h4>
+                        <div class="number">০১৩১২-১৮৫২৭৭</div>
+                    </div>
+                    
+                    <div class="payment-instructions">
+                        <h4>পেমেন্ট করার নিয়ম:</h4>
+                        <ul>
+                            <li>উপরের নম্বরটিতে আপনার অর্ডারের মূল্য পাঠান</li>
+                            <li>ট্রানজেকশন আইডি (TrxID) সংরক্ষণ করুন</li>
+                            <li>অর্ডার পৃষ্ঠায় ট্রানজেকশন আইডি প্রবেশ করুন</li>
+                            <li>পেমেন্ট ভেরিফাই হলে অর্ডার কনফার্ম হবে</li>
+                            <li>২৪ ঘণ্টার মধ্যে কাজ ডেলিভারি পেয়ে যাবেন</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>BDeskGigs</h3>
+                    <p>বাংলাদেশের ফ্রিল্যান্সার এবং ক্লায়েন্টদের জন্য একটি বিশ্বস্ত প্ল্যাটফর্ম।</p>
+                </div>
+                <div class="footer-col">
+                    <h3>ক্যাটেগরিস</h3>
+                    <ul>
+                        <li><a href="#">গ্রাফিক্স ও ডিজাইন</a></li>
+                        <li><a href="#">ডিজিটাল মার্কেটিং</a></li>
+                        <li><a href="#">রাইটিং ও ট্রান্সলেশন</a></li>
+                        <li><a href="#">ভিডিও ও অ্যানিমেশন</a></li>
+                        <li><a href="#">ওয়েব ডেভেলপমেন্ট</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>সম্পর্কিত</h3>
+                    <ul>
+                        <li><a href="#">কিভাবে কাজ করবো</a></li>
+                        <li><a href="#">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="#">টার্মস অফ সার্ভিস</a></li>
+                        <li><a href="#">সাপোর্ট</a></li>
+                        <li><a href="#">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>যোগাযোগ</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@bdeskgigs.com</li>
+                        <li><i class="fas fa-phone"></i> +৮৮০১৩১২-১৮৫২৭৭</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; ২০২৩ BDeskGigs. সকল স্বত্ব সংরক্ষিত।
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple search functionality
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-box input').value;
+            if(searchTerm.trim()) {
+                alert(`"${searchTerm}" - এই কীওয়ার্ডে সার্চ করা হয়েছে!`);
+            } else {
+                alert('অনুগ্রহ করে সার্চ কীওয়ার্ড লিখুন।');
+            }
+        });
+        
+        // Make search work on Enter key
+        document.querySelector('.search-box input').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                document.querySelector('.search-box button').click();
+            }
+        });
+        
+        // Join button functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            if(button.textContent === 'Join') {
+                button.addEventListener('click', function() {
+                    alert('BDeskGigs এ স্বাগতম! রেজিস্ট্রেশন ফর্ম লোড হচ্ছে...');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
